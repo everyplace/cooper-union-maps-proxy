@@ -25,8 +25,15 @@ app.configure('development', function(){
 });
 
 //configure routes
-app.get('/', routes.index);
-app.get('/weather/:state/:city', routes.weather);
+app.get('/', function(req, res){res.redirect('/map-external.html')});
+
+app.get('/js/:file', function(req, res, next){
+  res.set({
+    'Content-Type':'application/json',
+    'Access-Control-Allow-Origin':'*'
+  });
+  next();
+});
 
 
 //initiate the app server
