@@ -27,13 +27,16 @@ var draw = function(id, mapOptions, positions) {
   for (i in markers) {
 
     //create a template with two placeholder to replace
-    var popUpTemplate = '<div class="content"><a href="{{link}}">{{content}}</a></div>';
+    var popUpTemplate = '<div class="content">{{html}}<a href="{{link}}">{{content}}</a></div>';
 
     //replace the content placeholder
     popUps[i] = popUpTemplate.replace('{{content}}', positions[i].title);
 
     //replace the link placeholder
     popUps[i] = popUps[i].replace('{{link}}', positions[i].link);
+
+    //replace the html placeholder
+    popUps[i] = popUps[i].replace('{{html}}', positions[i].html);
 
     //create a new info window
     infoWindows[i] = new google.maps.InfoWindow({
