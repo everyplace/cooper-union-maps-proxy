@@ -36,7 +36,12 @@ var draw = function(id, mapOptions, positions) {
     popUps[i] = popUps[i].replace('{{link}}', positions[i].link);
 
     //replace the html placeholder
-    popUps[i] = popUps[i].replace('{{html}}', positions[i].html);
+
+    if(positions[i].html != undefined) {
+      popUps[i] = popUps[i].replace('{{html}}', positions[i].html);
+    } else {
+      popUps[i] = popUps[i].replace('{{html}}', '');
+    }
 
     //create a new info window
     infoWindows[i] = new google.maps.InfoWindow({
